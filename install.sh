@@ -8,14 +8,22 @@ GREEN='\033[0;32m'; YELLOW='\033[1;33m'; CYAN='\033[0;36m'; RED='\033[0;31m'; NC
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_NAME="solana-protocol-ops"
 
-CLAUDE_DIR="$HOME/.claude"
+DIRNAME=".claude"
+SKIP_CONFIRM=false
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -y|--yes)  SKIP_CONFIRM=true; shift ;;
+        --agents)  DIRNAME=".agents"; shift ;;   # install under ~/.agents (Codex / non-Claude tools)
+        -h|--help) echo "Usage: ./install.sh [-y|--yes] [--agents]"; exit 0 ;;
+        *) echo "Unknown option: $1"; exit 1 ;;
+    esac
+done
+
+CLAUDE_DIR="$HOME/$DIRNAME"
 SKILL_PATH="$CLAUDE_DIR/skills/$SKILL_NAME"
 AGENTS_DIR="$CLAUDE_DIR/agents"
 COMMANDS_DIR="$CLAUDE_DIR/commands"
 CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
-
-SKIP_CONFIRM=false
-[ "$1" = "-y" ] || [ "$1" = "--yes" ] && SKIP_CONFIRM=true
 
 echo ""
 echo -e "${CYAN}Solana Protocol Ops & Incident Response — Standard Install${NC}"
@@ -64,4 +72,5 @@ echo -e "  ${GREEN}✓${NC} $CLAUDE_MD"
 
 echo ""
 echo -e "${GREEN}Installation complete.${NC} Try: \"Set up monitoring for my program <id>\" or /watch <program-id>"
+echo -e "  ${YELLOW}Codex / non-Claude agents:${NC} run from the cloned repo — AGENTS.md at the root is the entry point."
 echo ""

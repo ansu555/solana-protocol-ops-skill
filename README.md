@@ -2,11 +2,12 @@
 
 > **SRE / on-call for live Solana protocols** — the run-time operational layer the rest of the [Solana AI Kit](https://github.com/solanabr/solana-ai-kit) is missing. Monitor, detect, respond, trace stolen funds, recover, and turn every incident back into a build-time audit rule.
 
-status
-scope
-stack
-validated
-license
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Scope](https://img.shields.io/badge/scope-run--time%20incident%20response-8a2be2)
+![Stack](https://img.shields.io/badge/stack-%40solana%2Fkit%20%C2%B7%20Helius%20%C2%B7%20Surfpool-14F195)
+[![Validated](https://img.shields.io/badge/validated-Cashio%20%C2%B7%20Mango-success)](fixtures/README.md)
+![Use](https://img.shields.io/badge/use-defensive%20only-critical)
+![Solana](https://img.shields.io/badge/Solana-black?logo=solana)
 
 A skill for **Claude Code, Codex / any agentic setup** covering the **run-time** life of a Solana protocol — everything that happens *after* you launch. Built for the [Solana AI Kit](https://github.com/solanabr/solana-ai-kit).
 
@@ -163,6 +164,17 @@ cd solana-protocol-ops-skill
 ```
 
 The skill expects the Helius MCP configured (`HELIUS_API_KEY`) and, optionally, Surfpool — both already part of the Solana AI Kit's `.mcp.json`.
+
+**Codex / non-Claude agents**
+
+Run Codex from the cloned repo — [AGENTS.md](AGENTS.md) at the root is the portable entry point. Codex (and any `AGENTS.md`-aware tool) reads it automatically, and it routes to the same `skill/*.md` playbooks. For Cursor / Windsurf / Copilot-style tools that expect a `.claude`-like layout under a different name, install into `.agents/` instead:
+
+```bash
+./install.sh --agents                    # personal: ~/.agents
+./install-custom.sh --project --agents   # project:  ./.agents (also drops AGENTS.md at the project root)
+```
+
+> The `incident-commander` agent and the `/incident` `/trace` `/watch` slash-commands are Claude Code features. In Codex and other tools the **same workflows run by asking in natural language** (e.g. "trace the funds from `<tx>`") — AGENTS.md tells the agent which playbook to open.
 
 **Use within the Solana AI Kit (as a submodule)**
 

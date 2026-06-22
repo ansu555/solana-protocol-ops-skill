@@ -10,15 +10,19 @@ GREEN='\033[0;32m'; YELLOW='\033[1;33m'; CYAN='\033[0;36m'; NC='\033[0m'
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILL_NAME="solana-protocol-ops"
 
-BASE="$HOME/.claude"
+ROOT="$HOME"
+DIRNAME=".claude"
+COPY_AGENTS_MD=false
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --project) BASE="$(pwd)/.claude"; shift ;;
-        --path)    BASE="$2/.claude"; shift 2 ;;
-        -h|--help) echo "Usage: ./install-custom.sh [--project | --path <dir>]"; exit 0 ;;
+        --project) ROOT="$(pwd)"; COPY_AGENTS_MD=true; shift ;;
+        --path)    ROOT="$2";     COPY_AGENTS_MD=true; shift 2 ;;
+        --agents)  DIRNAME=".agents"; shift ;;   # use .agents instead of .claude (Codex / non-Claude tools)
+        -h|--help) echo "Usage: ./install-custom.sh [--project | --path <dir>] [--agents]"; exit 0 ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
+BASE="$ROOT/$DIRNAME"
 
 SKILL_PATH="$BASE/skills/$SKILL_NAME"
 AGENTS_DIR="$BASE/agents"
@@ -43,5 +47,11 @@ for f in "$SCRIPT_DIR"/agents/*.md;   do [ -e "$f" ] && cp "$f" "$AGENTS_DIR/${S
 for f in "$SCRIPT_DIR"/commands/*.md; do [ -e "$f" ] && cp "$f" "$COMMANDS_DIR/$(basename "$f")"; done
 [ -f "$CLAUDE_MD" ] && cp "$CLAUDE_MD" "$CLAUDE_MD.backup"
 cp "$SCRIPT_DIR/CLAUDE.md" "$CLAUDE_MD"
+
+if [ "$COPY_AGENTS_MD" = true ] && [ -f "$SCRIPT_DIR/AGENTS.md" ]; then
+    [ -f "$ROOT/AGENTS.md" ] && cp "$ROOT/AGENTS.md" "$ROOT/AGENTS.md.backup"
+    sed "s#(skill/#(${DIRNAME}/skills/${SKILL_NAME}/#g" "$SCRIPT_DIR/AGENTS.md" > "$ROOT/AGENTS.md"
+    echo -e "${GREEN}✓${NC} AGENTS.md → $ROOT/AGENTS.md (Codex / non-Claude entry)"
+fi
 
 echo -e "${GREEN}✓ Done.${NC} Installed to $BASE"

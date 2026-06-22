@@ -1,8 +1,8 @@
 ---
-
-## name: solana-protocol-ops  
+name: solana-protocol-ops
 description: SRE / on-call for live Solana protocols the run-time operational layer the kit is missing. Use it once a program is live on mainnet and something is, or might be, wrong. It runs the full incident lifecycle PREPARE, DETECT, TRIAGE, CONTAIN, ERADICATE, RECOVER, LEARN. Core capabilities derive and watch on-chain invariants (catch a drain at t=0); detect drains in progress; run and contain an incident; trace stolen funds across swaps, CPIs, and bridges with freeze-actionability scoring; coordinate internal and external comms; and turn each post-mortem into a new build-time audit rule. Data engine the Helius and Surfpool MCPs already configured in the kit. For build-time security pre-launch audits, formal verification delegate to safe-solana-builder, trailofbits, or qedgen.  
 user-invocable: true
+---
 
 # Solana Protocol Ops & Incident Response
 
