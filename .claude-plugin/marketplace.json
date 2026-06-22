@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "solana-protocol-ops",
+  "owner": {
+    "name": "ansu555",
+    "url": "https://github.com/ansu555"
+  },
+  "metadata": {
+    "description": "Run-time operations & incident response for live Solana protocols.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "solana-protocol-ops",
+      "source": "./",
+      "description": "SRE / incident-commander for live Solana protocols: invariant monitoring, drain detection, incident runbooks, fund-tracing forensics with freeze-actionability scoring, recovery/negotiation, and post-mortem feedback loops. Data engine: Helius + Surfpool MCPs.",
+      "version": "1.0.0",
+      "author": {
+        "name": "ansu555"
+      },
+      "homepage": "https://github.com/ansu555/solana-protocol-ops-skill",
+      "repository": "https://github.com/ansu555/solana-protocol-ops-skill",
+      "license": "MIT",
+      "category": "security",
+      "keywords": [
+        "solana",
+        "incident-response",
+        "monitoring",
+        "forensics",
+        "security"
+      ]
+    }
+  ]
+}

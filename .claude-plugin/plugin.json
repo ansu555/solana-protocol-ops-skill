@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "solana-protocol-ops",
+  "displayName": "Solana Protocol Ops & Incident Response",
+  "version": "1.0.0",
+  "description": "SRE / incident-commander for live Solana protocols — the run-time layer: derive and watch on-chain invariants, detect drains, run the incident lifecycle, trace stolen funds across swaps/CPIs/bridges, recover, and turn each post-mortem into a build-time audit rule.",
+  "author": {
+    "name": "ansu555",
+    "url": "https://github.com/ansu555"
+  },
+  "homepage": "https://github.com/ansu555/solana-protocol-ops-skill",
+  "repository": "https://github.com/ansu555/solana-protocol-ops-skill",
+  "license": "MIT",
+  "keywords": [
+    "solana",
+    "incident-response",
+    "monitoring",
+    "invariants",
+    "forensics",
+    "fund-tracing",
+    "security",
+    "sre",
+    "helius",
+    "surfpool"
+  ],
+  "skills": ["./skill"]
+}
