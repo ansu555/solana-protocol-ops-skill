@@ -31,4 +31,12 @@ git clone --depth 1 --branch "$BRANCH" "$REPO" "$TMP_DIR" >/dev/null 2>&1 || {
 
 chmod +x "$TMP_DIR/install.sh"
 echo -e "${GREEN}✓${NC} Clone complete. Running installer...\n"
+
+# When piped (curl | bash) stdin is the pipe, not a terminal, so install.sh's
+# interactive confirm prompt can't be answered and would abort. The user already
+# opted in by running this command, so auto-confirm in that case. If no args were
+# given and we DO have a terminal, leave it interactive.
+if [ "$#" -eq 0 ] && [ ! -t 0 ]; then
+    set -- -y
+fi
 "$TMP_DIR/install.sh" "$@"
