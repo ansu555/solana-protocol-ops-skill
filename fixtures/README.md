@@ -1,6 +1,18 @@
 # Validation fixtures
 
-Executable proof that the skill's recipes run — not just prose. Two kinds:
+> **Proof, not prose.** The skill's detectors run against **real exploits** that
+> are permanently on-chain — anyone with an archive RPC can reproduce the results.
+> Each run writes a **committed proof artifact** (captured output of an actual run).
+
+### Evidence at a glance
+
+| Fixture | What it proves | On real data? | Proof artifact |
+|---|---|---|---|
+| **Cashio forward trace** | Value-not-token tracing through a Saber swap (a substitution, not a dead end) | ✅ immutable mainnet history | `cashio-trace.json` |
+| **Mango backward trace** | Backward attribution to a labeled CEX (recovers a *name*) | ✅ immutable mainnet history | `mango-trace.json` |
+| **Invariant monitor** | The shipped monitor fires SEV1 on the breach *condition* | ✅ local Surfpool surfnet (no key, no fork) | `invariant-surfpool.json` |
+
+Two kinds of fixture:
 
 - **Forensics fixtures** run the shipped engine against **immutable mainnet
   history**, so no fork is needed (see
