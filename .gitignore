@@ -1,0 +1,54 @@
+# Secrets / env
+.env
+.env.*
+*.env
+.secrets
+*.pem
+*.key
+secrets.json
+credentials.json
+
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Build / cache
+dist/
+build/
+out/
+.cache/
+
+# Logs / tmp
+logs/
+*.log
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+*.orig
+
+# OS / editors
+.DS_Store
+._*
+Thumbs.db
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local Claude settings
+.claude/settings.local.json

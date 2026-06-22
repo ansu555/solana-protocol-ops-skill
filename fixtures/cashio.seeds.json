@@ -1,0 +1,17 @@
+{
+  "note": "Real on-chain coordinates for the Cashio exploit (2022-03-23, ~$48M). Discovered against Helius archive RPC via find-cashio-drain.ts (drain = the +2,000,000,000 CASH mint) and inspect-cashio.ts (attacker = recipient of that CASH; swap = the attacker's CASH->stablecoin leg). attacker received 2B CASH against fake collateral, then swapped on Saber into USDC + Wormhole-UST.",
+  "attacker": "6D7fgzpPZXtDB6Zqg3xRwfbohzerbytB2U5pFchnVuzw",
+  "cashMint": "CASHVDm2wsJXfhj6VWxb7GiMdoLc17Du7paH4bNr5woT",
+  "signatures": {
+    "drain": ["4fgL8D6QXKH1q3Gt9GPzeRDpTgq4cE5hxf1hNDUWrJVUe4qDJ1xmUZE7KJWDANT99jD8UvwNeBb1imvujz3Pz2K5"],
+    "swap": ["3qeUYN3sjxxhZFTEGoDYEe4YNwqqQH8tpaa4UGdAqfVNWautK9fQ5JRoo4W1YKZ6ouVkk3sC51WQiwmxbpuinXm3"]
+  },
+  "labels": {
+    "CASHVDm2wsJXfhj6VWxb7GiMdoLc17Du7paH4bNr5woT": "CASH",
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": "USDC",
+    "9vMJfxuKxXBoEa7rM12mYLMwTacLMLDJqHozw96WQL8i": "UST-Wormhole",
+    "J77Nq48nbq4Etf1voss38R3dTdR3yD7y5F6W6TaVHvmb": "Cashio-bank-PDA",
+    "6D7fgzpPZXtDB6Zqg3xRwfbohzerbytB2U5pFchnVuzw": "attacker-EOA",
+    "SOL": "SOL"
+  }
+}

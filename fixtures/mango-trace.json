@@ -1,0 +1,24 @@
+{
+  "fixture": "mango",
+  "generatedAt": "2026-06-22T06:56:54.090Z",
+  "attacker": "attacker-owner-EOA-1 (Eisenberg)",
+  "proves": "Backward funding-source attribution on real on-chain history: starting from the Mango attacker account and following inflows backward reaches a labeled funding entity (a KYC'd CEX withdrawal) in a small number of hops — the 'trace recovers a name' claim, and the Mango contrast to the Cashio forward/substitution fixture (which traces value, not attribution).",
+  "reachedLabeledTerminal": true,
+  "fundingTerminal": "FTX-hot-wallet",
+  "hops": 1,
+  "chain": [
+    {
+      "to": "attacker-owner-EOA-1 (Eisenberg)",
+      "tx": "2p86oBt6jV5QAFzWWCChSbNfd8rdNo3ZggzYS1uytTe1KJCemjMhmZ4qVasuu6FdcYz12PnK7WnyQXEyt74gFUyG",
+      "slot": "154844833",
+      "blockTime": "2022-10-11T19:36:47.000Z",
+      "received": {
+        "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": "24838202512"
+      },
+      "funder": "FTX-hot-wallet",
+      "funderPaid": {
+        "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": "-24838202512"
+      }
+    }
+  ]
+}

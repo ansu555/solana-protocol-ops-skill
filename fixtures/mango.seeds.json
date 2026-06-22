@@ -1,0 +1,20 @@
+{
+  "note": "Real on-chain coordinates for the Mango Markets exploit (2022-10-11, ~$116M, oracle/price manipulation). Unlike Cashio, the forward trace is short — funds largely stayed identifiable on Solana — so the leverage is BACKWARD ATTRIBUTION (skill/fund-tracing-forensics.md step 6): from the attacker account, walk inflows back to a labeled funding entity. Avraham Eisenberg later self-identified; the on-chain backward trace independently reaches the funding source. Discovered against Helius archive RPC via find-mango-funding.ts. `attacker` = Eisenberg's MangoAccount1 *owner* EOA (the wallet that signed the borrow/withdraw and owns the long-position Mango account 4ND8…). Its first inflow is a +24,838.2 USDC deposit from FTX (terminal below), 2022-10-11T19:36:47Z — ~2.5h before the ~22:19Z exploit. backwardTrace reaches the labeled CEX in ONE hop = attribution.",
+  "mangoV3Program": "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68",
+  "exploitWindow": ["2022-10-11T00:00:00Z", "2022-10-12T12:00:00Z"],
+  "attacker": "yUJw9a2PyoqKkH47i4yEGf4WXomSHMiK7Lp29Xs2NqM",
+  "maxHops": 6,
+  "terminals": {
+    "6ZRCB7AAqGre6c72PRz3MHLC73VMYvJ8bi9KHf1HFpNk": "FTX (KYC'd CEX hot wallet — attribution target)"
+  },
+  "labels": {
+    "yUJw9a2PyoqKkH47i4yEGf4WXomSHMiK7Lp29Xs2NqM": "attacker-owner-EOA-1 (Eisenberg)",
+    "J44uRJxJEDTyPgFG6BtQJ3skhex8FeBbDJWVoh3z9dJU": "attacker-owner-EOA-2 (Eisenberg)",
+    "4ND8FVPjUGGjx9VuGFuJefDWpg3THb58c277hbVRnjNa": "attacker-MangoAccount1 (long MNGO-PERP)",
+    "CQvKSNnYtPTZfQRQ5jkHq8q2swJyRsdQLcFcj3EmKFfX": "attacker-MangoAccount2 (short MNGO-PERP)",
+    "6ZRCB7AAqGre6c72PRz3MHLC73VMYvJ8bi9KHf1HFpNk": "FTX-hot-wallet",
+    "mv3ekLzLbnVPNxjSKvqBpU3ZeZXPQdEC3bp5MDEBG68": "Mango-v3-program",
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": "USDC",
+    "SOL": "SOL"
+  }
+}

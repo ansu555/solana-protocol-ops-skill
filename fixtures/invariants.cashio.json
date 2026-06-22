@@ -1,0 +1,29 @@
+{
+  "_note": "Declarative invariant spec for the Cashio stablecoin (the reviewable artifact from skill/invariant-monitoring.md). The mint is the real mainnet CASH mint; the collateral-vault and crate-state PDAs are placeholders an operator fills from the program's IDL + getProgramAccounts (they are program-specific). run-invariant-surfpool.ts builds an equivalent spec over *synthetic* accounts so it can drive the breach with cheatcodes; this file is the mainnet-shaped form you would actually monitor with `tsx monitor.ts invariants.cashio.json` against a live/archive RPC.",
+  "program": "CASHVDm2wsJXfhj6VWxb7GiMdoLc17Du7paH4bNr5woT",
+  "cluster": "mainnet-beta",
+  "invariants": [
+    {
+      "id": "cash-solvency",
+      "family": "solvency",
+      "severity": "SEV1",
+      "expr": "cash_supply <= total_backing",
+      "terms": {
+        "cash_supply": { "kind": "tokenSupply", "mint": "CASHVDm2wsJXfhj6VWxb7GiMdoLc17Du7paH4bNr5woT" },
+        "total_backing": { "kind": "sumTokenBalances", "accounts": ["<collateral vault 1>", "<collateral vault 2>"] }
+      },
+      "epsilon": "0"
+    },
+    {
+      "id": "collateral-custody",
+      "family": "custody",
+      "severity": "SEV1",
+      "expr": "abs(recorded_collateral - vault_balance) <= epsilon",
+      "terms": {
+        "recorded_collateral": { "kind": "sumTokenBalances", "accounts": ["<accounting / reported-collateral account>"] },
+        "vault_balance": { "kind": "sumTokenBalances", "accounts": ["<collateral vault 1>"] }
+      },
+      "epsilon": "1"
+    }
+  ]
+}

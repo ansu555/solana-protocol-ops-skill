@@ -1,0 +1,78 @@
+{
+  "fixture": "invariant-cashio-surfpool",
+  "generatedAt": "2026-06-22T06:43:02.124Z",
+  "method": "Synthetic reconstruction via Surfpool cheatcodes (surfnet_setAccount for the SPL mint supply, surfnet_setTokenAccount for collateral balances) on a local surfnet — no historical fork.",
+  "proves": "The shipped invariant monitor (monitor.ts) holds on a healthy supply==backing state and fires SEV1 breaches on cash-solvency and collateral-custody the instant 2,000,000,000 unbacked CASH is minted — i.e. it would have caught Cashio at t=0, before the Saber swap or the bridge.",
+  "surfpool": {
+    "surfnet-version": "1.0.0",
+    "solana-core": "3.1.6",
+    "feature-set": 2086771155
+  },
+  "accounts": {
+    "cashMint": "FwJTmXiB3EmfeMyWZJXP5pBNbwZScnWanfsxPunYsRQV",
+    "collatMint": "6xmcBwW3XmRNZxSiVWDTuFfNCfgnwqDRRNsJw5gkbmXA",
+    "programPda": "7BAaJFE8U5GFySxYsgnSPpo7zf3yAQsqsTtM4k566mBj",
+    "realVault": "B8WFHXnU5CzsAYZQvsD4t8FtJrGLNFD82PsrM6bXhTHH",
+    "accounting": "AKTAgCMzVKXYy5YgNakfBvwvBuZKxX7gL1L5MWHwcwsW"
+  },
+  "phases": {
+    "baseline": {
+      "state": "supply == backing",
+      "breaches": [
+        {
+          "id": "cash-solvency",
+          "family": "solvency",
+          "severity": "SEV1",
+          "expr": "cash_supply <= total_backing",
+          "observed": {
+            "cash_supply": "28840000",
+            "total_backing": "28840000",
+            "epsilon": "0"
+          },
+          "ok": true
+        },
+        {
+          "id": "collateral-custody",
+          "family": "custody",
+          "severity": "SEV1",
+          "expr": "abs(recorded_collateral - vault_balance) <= epsilon",
+          "observed": {
+            "recorded_collateral": "28840000",
+            "vault_balance": "28840000",
+            "epsilon": "1"
+          },
+          "ok": true
+        }
+      ]
+    },
+    "postExploit": {
+      "state": "supply = 2000000028840000 vs backing = 28840000",
+      "breaches": [
+        {
+          "id": "cash-solvency",
+          "family": "solvency",
+          "severity": "SEV1",
+          "expr": "cash_supply <= total_backing",
+          "observed": {
+            "cash_supply": "2000000028840000",
+            "total_backing": "28840000",
+            "epsilon": "0"
+          },
+          "ok": false
+        },
+        {
+          "id": "collateral-custody",
+          "family": "custody",
+          "severity": "SEV1",
+          "expr": "abs(recorded_collateral - vault_balance) <= epsilon",
+          "observed": {
+            "vault_balance": "28840000",
+            "recorded_collateral": "2000000028840000",
+            "epsilon": "1"
+          },
+          "ok": false
+        }
+      ]
+    }
+  }
+}

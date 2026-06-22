@@ -1,0 +1,23 @@
+{
+  "name": "protocol-ops-fixtures",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Executable validation fixtures for solana-protocol-ops. Forensics fixtures run the shipped engine against immutable mainnet history (no fork). The invariant fixture reconstructs the breach on a local Surfpool surfnet via cheatcodes.",
+  "scripts": {
+    "trace:cashio": "tsx run-cashio.ts",
+    "find:cashio": "tsx find-cashio-drain.ts",
+    "trace:mango": "tsx run-mango.ts",
+    "find:mango": "tsx find-mango-funding.ts",
+    "invariant:surfpool": "tsx run-invariant-surfpool.ts"
+  },
+  "dependencies": {
+    "@solana-program/token": "^0.5.1",
+    "@solana/kit": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

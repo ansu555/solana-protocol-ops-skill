@@ -1,0 +1,48 @@
+{
+  "fixture": "cashio",
+  "generatedAt": "2026-06-21T21:55:32.918Z",
+  "attacker": "attacker-EOA",
+  "proves": "Net actor-delta on real on-chain txs: the Saber leg returns { CASH: negative, stablecoin: positive } for one actor — a substitution, not a hop. Validates the 'trace value, not tokens' engine against immutable history.",
+  "rows": [
+    {
+      "kind": "drain",
+      "tx": "4fgL8D6QXKH1q3Gt9GPzeRDpTgq4cE5hxf1hNDUWrJVUe4qDJ1xmUZE7KJWDANT99jD8UvwNeBb1imvujz3Pz2K5",
+      "slot": "126266822",
+      "blockTime": "2022-03-23T08:20:08.000Z",
+      "attackerDelta": {
+        "GCnK63zpqfGwpmikGBWRSMJLGLW8dsW97N4VAXKaUSSC": "-2000000000000000",
+        "CASH": "2000000000000000",
+        "SOL": "-5000"
+      },
+      "substitution": true,
+      "counterparties": {
+        "Cashio-bank-PDA": {
+          "GCnK63zpqfGwpmikGBWRSMJLGLW8dsW97N4VAXKaUSSC": "2000000000000000"
+        }
+      }
+    },
+    {
+      "kind": "swap",
+      "tx": "3qeUYN3sjxxhZFTEGoDYEe4YNwqqQH8tpaa4UGdAqfVNWautK9fQ5JRoo4W1YKZ6ouVkk3sC51WQiwmxbpuinXm3",
+      "slot": "126266993",
+      "blockTime": "2022-03-23T08:21:41.000Z",
+      "attackerDelta": {
+        "CASH": "-1972506869919436",
+        "UST-Wormhole": "8646022048146",
+        "USDC": "17041006502517",
+        "SOL": "-5000"
+      },
+      "substitution": true,
+      "counterparties": {
+        "7K88AAbfSVHEZY87Ur3PrDhBYpwhKfTGxSWzMdh7XxUj": {
+          "CASH": "986253434959718",
+          "UST-Wormhole": "-8646022048146"
+        },
+        "4ofEvMGQ87LFQ9aNw6pCDocFytWBH8BYqL7MwDKfQt1U": {
+          "CASH": "986253434959718",
+          "USDC": "-17041006502517"
+        }
+      }
+    }
+  ]
+}
