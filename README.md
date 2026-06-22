@@ -153,6 +153,17 @@ curl -fsSL https://raw.githubusercontent.com/ansu555/solana-protocol-ops-skill/m
 
 This clones the repo to a temp dir and runs the standard installer into `~/.claude`. Review the script first if you prefer: [bootstrap.sh](bootstrap.sh).
 
+**Plugin marketplace (Claude Code)**
+
+This repo is also its own Claude Code plugin marketplace — install with managed updates, no clone or script:
+
+```text
+/plugin marketplace add ansu555/solana-protocol-ops-skill
+/plugin install solana-protocol-ops@solana-protocol-ops
+```
+
+This registers the `solana-protocol-ops` skill, the `incident-commander` agent, and the `/incident` `/trace` `/watch` commands. Refresh later with `/plugin marketplace update solana-protocol-ops`.
+
 **Manual install**
 
 ```bash
